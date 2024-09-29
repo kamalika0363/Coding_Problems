@@ -22,12 +22,17 @@ int maxUnique: the maximum unique characters of the substring
 
 def getMaxOccurrences(components, minLength, maxLength, maxUnique):
     max_count = 0
-    for length in range(minLength + 2, maxLength + 3):
+    valid_substrings = set()
+    for length in range(minLength + 2, maxLength + 3, len(components) + 1):
         for i in range(len(components) - length + 1):
             substring = components[i:i + length]
             unique_chars = len(set(substring))
             if unique_chars <= maxUnique:
-                max_count = max(max_count, 1)
+                valid_substrings.add(substring)
+
+    if valid_substrings:
+        max_count = 1
+
     return max_count
 
 

@@ -11,7 +11,7 @@ Finding the maximum number of groups that can be created.
 from typing import List
 
 
-def max_groups(N: int, X: List[int]):
+def max_groups(N: int, X: List[int]) -> int:
     groups = 0
     left = 0
 
@@ -27,6 +27,17 @@ def max_groups(N: int, X: List[int]):
     return groups
 
 
-N = 8
-X = [1, 2, 1, 1, 1, 1, 1, 1]
-print(max_groups(N, X))
+def main():
+    N = int(input("Enter the number of students: "))
+    X = list(map(int, input("Enter the compatibility factors (space-separated): ").split()))
+
+    if len(X) != N:
+        print("Error: The number of compatibility factors must match the number of students.")
+        return
+
+    result = max_groups(N, X)
+    print(f"The maximum number of groups that can be created is: {result}")
+
+
+if __name__ == "__main__":
+    main()
